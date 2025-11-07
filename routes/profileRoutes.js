@@ -97,7 +97,7 @@ router.post("/api/login", loginLimiter, async (req, res) => {
     const accessToken = jwt.sign(
       { id: profile._id, role: profile.role },
       process.env.JWT_SECRET,
-      { expiresIn: "2min" }
+      { expiresIn: "15min" }
     );
 
     const refreshToken = jwt.sign(
@@ -187,7 +187,7 @@ router.post("/refresh", async (req, res) => {
         role: profile.role,
       },
       process.env.JWT_SECRET,
-      { expiresIn: "2min" }
+      { expiresIn: "15min" }
     );
     res.status(200).json({ accessToken: newAccesToken });
   } catch (error) {
